@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/095377ddd5.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="mt-2">
+        <div class="pt-4 pb-2">
+            <h2 class="text-center">{{full_name}}</h2>
+            <h2 class="text-center">{{email}} | {{phone}}</h2>
+            <h2 class="text-center">{{linkedin}}</h2>
+        </div>
+
+        <div class="mx-8 border-t-2 border-black">
+            <div class="border-t-4 pt-4"></div>
+            <h2 class="text-left border-y border-black font-semibold">OBJECTIVES</h2>
+            <p class="mx-4 pt-2 pb-3">{{objective}}</p>
+        </div>
+
+        <div class="mx-8 my-8 border-t-2 border-black">
+            <h2 class="text-left border-y border-black font-semibold">SKILLS</h2>
+            <ul>
+                {% for skill in skills %}
+                <li class="pt-1  ml-8 text-sm text-black list-disc">{{skill.name}}</li>
+
+                {% endfor %}
+            </ul>
+            <h2 class="ml-4 pt-3 pb-3 text-left underline underline-offset-1 font-semibold">Technical Certifications & Trainings</h2>
+            <ul>
+                {% for certification in certifications %}
+                <li class="pt-1  ml-8 text-sm text-black list-disc">{{certification.name}}</li>
+                {% endfor %}
+
+            </ul>
+        </div>
+
+        <div class="mx-8 my-8 border-t-2 border-black">
+            <h2 class="text-left border-y border-black font-semibold">EDUCATION</h2>
+            {% for education in educations %}
+            <div>
+                <div class="flex flex-row justify-between pt-2">
+                    <h4 class="text-base text-black font-semibold pt-1">{{education.institution}}</h4>
+                    <h4 class="text-base text-black font-semibold pt-1">{{education.start_date}} - {{education.end_date}}</h4>
+                </div>
+
+                <div class="flex flex-row justify-between">
+                    <ul>
+                        <li class="pt-0.5 text-sm text-black font-medium pt-1 pb-1">{{education.field_of_study}}</li>
+                    </ul>
+                    <ul>
+                        <li class="pt-0.5 text-sm text-black font-medium pt-1 pb-1">{{education.degree}}</li>
+                    </ul>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="mx-8 my-8 border-t-2 border-black">
+            <h2 class="text-left border-y border-black font-semibold">WORK EXPERIENCE</h2>
+            {% for experience in work_experiences %}
+            <div class="mb-5 pt-2">
+                <div class="flex flex-row justify-between">
+                    <h4 class="text-base text-gray-900 font-semibold pt-1">{{experience.company}}</h4>
+                    <h4 class="text-base text-gray-900 font-semibold pt-1">{{experience.start_date}} - {{experience.end_date}}</h4>
+                </div>
+                <p class="text-sm text-gray-900 pt-1">{{experience.position}}</p>
+
+                <ul>
+                    {% for item in experience.rewritten_responsibility %}
+                    <li class="pt-4 ml-8 text-sm text-gray-900 list-disc">{{item}}</li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+    </div>
+
+
+</body>
+</html>
+
+
